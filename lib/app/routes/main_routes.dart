@@ -1,5 +1,6 @@
-import 'package:app_frotas/app/modules/auth/presentation/cubits/splash_cubit.dart';
+import 'package:app_frotas/app/modules/auth/presentation/cubits/splash_cubit/splash_cubit.dart';
 import 'package:app_frotas/app/modules/auth/presentation/pages/splash_page.dart';
+import 'package:app_frotas/app/routes/auth_routes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,5 +13,6 @@ List<GoRoute> mainRoutes = [
         child: const SplashPage(),
       );
     },
-  )
+  ),
+  ...authRoutes,
 ];
