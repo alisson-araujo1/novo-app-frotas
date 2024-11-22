@@ -41,7 +41,7 @@ class AuthRemoteDataSource implements AuthDataSource {
         },
       );
 
-      if (response.data["status_code"] == 0) {
+      if (response.data["response_code"] == 0) {
         return AuthResponseModel.fromJson(response.data);
       } else {
         throw Exception('Ocorreu um erro: ${response.data["message"]}');
