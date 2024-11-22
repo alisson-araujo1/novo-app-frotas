@@ -1,17 +1,20 @@
+import 'package:app_frotas/app/modules/auth/data/datasources/auth_local_data_source.dart';
+import 'package:app_frotas/app/modules/auth/data/models/auth_response_model.dart';
 import 'package:dio/dio.dart';
 
 import 'auth_data_source.dart';
 
 class AuthRemoteDataSource implements AuthDataSource {
   final Dio dio;
+  final AuthLocalDataSource authLocalDataSource;
 
-  AuthRemoteDataSource({required this.dio});
+  AuthRemoteDataSource({required this.dio, required this.authLocalDataSource});
 
   @override
-  Future<Map<String, dynamic>> login(String username, String password) async {
+  Future<AuthResponseModel> login(String username, String password) async {
     try {
       final response = await dio.post(
-        '/login',
+        '/appfrotas/driver/auth',
         data: {
           'username': username,
           'password': password,
@@ -19,9 +22,29 @@ class AuthRemoteDataSource implements AuthDataSource {
       );
 
       if (response.statusCode == 200) {
-        return response.data;
+        return AuthResponseModel.fromJson(response.data);
       } else {
         throw Exception('Erro na autenticação: ${response.statusMessage}');
+      }
+    } catch (e) {
+      throw Exception('Erro: $e');
+    }
+  }
+
+  @override
+  Future<AuthResponseModel> refreshToken(String token) async {
+    try {
+      final response = await dio.post(
+        '/appfrotas/driver/refresh_token',
+        data: {
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      if (response.data["status_code"] == 0) {
+        return AuthResponseModel.fromJson(response.data);
+      } else {
+        throw Exception('Ocorreu um erro: ${response.data["message"]}');
       }
     } catch (e) {
       throw Exception('Erro: $e');

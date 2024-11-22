@@ -5,7 +5,7 @@ class AuthLocalDataSource {
 
   AuthLocalDataSource({required this.storage});
 
-  Future<void> saveToken(String token) async {
+  Future<void> saveToken(String? token) async {
     await storage.write(key: 'accessToken', value: token);
   }
 

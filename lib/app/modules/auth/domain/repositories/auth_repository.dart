@@ -1,3 +1,6 @@
+import 'package:app_frotas/app/modules/auth/domain/entities/driver.dart';
+
 abstract class AuthRepository {
-  Future login(String username, String password);
+  Future<Driver> login(String username, String password);
+  Future refreshToken();
 }

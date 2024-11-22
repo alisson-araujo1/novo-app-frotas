@@ -1,4 +1,6 @@
 class Driver {
-  String? login;
-  String? password;
+  String? name;
+  String? cpf;
+
+  Driver({required this.name, required this.cpf});
 }
