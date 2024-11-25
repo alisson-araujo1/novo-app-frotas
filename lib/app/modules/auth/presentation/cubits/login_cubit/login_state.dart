@@ -1,6 +1,9 @@
 part of 'login_cubit.dart';
 
-sealed class LoginState {}
+abstract class LoginState extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
 
 final class LoginInitial extends LoginState {}
 

@@ -20,7 +20,7 @@ class LoginPage extends StatelessWidget {
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 20),
-                LoginForm(), // Widget que encapsula o formulário
+                LoginForm(),
               ],
             ),
           ),

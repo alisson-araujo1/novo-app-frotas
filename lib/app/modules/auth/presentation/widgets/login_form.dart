@@ -20,6 +20,9 @@ class _LoginFormState extends State<LoginForm> {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Login realizado com sucesso!')),
+          );
         } else if (state is LoginFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.message)),
@@ -36,7 +39,7 @@ class _LoginFormState extends State<LoginForm> {
               decoration: const InputDecoration(labelText: 'Username'),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your username';
+                  return 'Por favor informe seu nome de usuário';
                 }
                 return null;
               },
@@ -48,7 +51,7 @@ class _LoginFormState extends State<LoginForm> {
               obscureText: true,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your password';
+                  return 'Por favor informe sua senha';
                 }
                 return null;
               },

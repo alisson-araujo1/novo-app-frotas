@@ -37,7 +37,7 @@ void main() {
             "token": token,
           },
           "driver_data": {
-            "name": "John Doe",
+            "name": "João da Silva",
             "cpf": "12345678900",
           },
           "clients": []
@@ -60,7 +60,7 @@ void main() {
 
       expect(result, isA<AuthResponseModel>());
       expect(result.data.authorization.token, token);
-      expect(result.data.driverData.name, 'John Doe');
+      expect(result.data.driverData.name, 'João da Silva');
       verify(mockDio.post('/appfrotas/driver/auth', data: {
         'username': username,
         'password': password,
@@ -101,7 +101,7 @@ void main() {
             "token": token,
           },
           "driver_data": {
-            "name": "John Doe",
+            "name": "João da Silva",
             "cpf": "12345678900",
           },
           "clients": []

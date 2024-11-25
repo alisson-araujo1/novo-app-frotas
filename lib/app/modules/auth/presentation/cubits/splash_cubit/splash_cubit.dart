@@ -1,5 +1,6 @@
 import 'package:app_frotas/app/core/constants/app_constants.dart';
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 
 part 'splash_state.dart';
 
